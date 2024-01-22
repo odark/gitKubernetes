@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-dep
+  name: my-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-dep
+  template:
+    metadata:
+      labels:
+        app: my-dep
+    spec:
+      containers:
+      - image: webserver:latest
+        name: webserver
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: host-path
+          mountPath: /mount1
+      volumes:
+      - name : host-path
+        hostPath:
+          path: /node-v
+          type: DirectoryOrCreate
