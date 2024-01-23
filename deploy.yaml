@@ -15,7 +15,7 @@ spec:
         app: my-dep
     spec:
       containers:
-      - image: odark/webserver:43
+      - image: odark/webserver:44
         name: webserver
         ports:
         - containerPort: 80
